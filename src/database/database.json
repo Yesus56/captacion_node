@@ -1,0 +1,39 @@
+{
+    "database" : {
+        "saime" : {
+            "database": "saime",
+            "username" : "postgres",
+            "password" : "desarrollo",
+            "patch": {
+                "host": "localhost",
+                "port":  5433,
+                "dialect": "postgres",
+                "pool": {
+                  "max": 5,
+                  "min": 0,
+                  "require": 30000,
+                  "idle": 30
+                }
+              }
+        },
+        "captacion" : {
+            "database": "captacion",
+            "username" : "postgres",
+            "password" : "desarrollo",
+            "patch": {
+                "host": "localhost",
+                "port":  5433,
+                "dialect": "postgres",
+                "pool": {
+                  "max": 5,
+                  "min": 0,
+                  "require": 30000,
+                  "idle": 300
+                }
+              }
+        }
+    }
+}
+
+
+
