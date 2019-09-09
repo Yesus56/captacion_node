@@ -20,7 +20,6 @@ const Fc_patria = c_patria(db.captacion, Sequelize);
 const Ff_persona = f_persona(db.captacion, Sequelize);
 // tabla perosna
 const personas = Personas(db.captacion, Sequelize);
-
 // tabla persona nacimeinto
 const Fp_nacimiento = p_nacimiento(db.captacion, Sequelize);
 // tabla muchos a muhcos persona s/c a persona
@@ -31,7 +30,7 @@ const P_sc = Persona_sc(db.captacion, Sequelize);
 const Fp_sc_nacimiento = p_sc_nacimiento(db.captacion, Sequelize);
 
 //tablas foraneas
-personas.hasMany(Fp_nacimiento, { foreingkey:'personaId', sourceKey: 'id'})
+personas.hasMany(Fp_nacimiento, { foreingkey: "personaId", sourceKey: "id" });
 export {
   Saimes,
   Fc_patria,

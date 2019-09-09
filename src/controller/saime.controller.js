@@ -1,8 +1,5 @@
-import {Saimes,personas} from "../models";
+import { Saimes, personas } from "../models";
 import { Res } from "../helpers/helpers";
-
-
-
 
 export function saime(req, res) {
   const body = req.body;
@@ -34,7 +31,7 @@ export function saime(req, res) {
       res.json(result);
     })
     .catch(err => {
-      console.log(err)
+      console.log(err);
       res
         .status(400)
         .json(
