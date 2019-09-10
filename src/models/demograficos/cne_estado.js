@@ -1,21 +1,31 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('cne_estado', {
-    edo: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true
+  return sequelize.define(
+    "cne_estado",
+    {
+      edo: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true
+      },
+      id: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+      },
+      estado: {
+        type: DataTypes.STRING,
+        allowNull: true
+      }
     },
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: true
-    },
-    estado: {
-      type: DataTypes.STRING,
-      allowNull: true
+    {
+      tableName: "cne_estado",
+      schema: "demograficos",
+      timestamps: false,
+      beforeFind : function(option){
+        options.attributes.exclude = ['id'];
+        return options;
+      }
     }
-  }, {
-    tableName: 'cne_estado'
-  });
+  );
 };

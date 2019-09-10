@@ -2,28 +2,28 @@
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define(
-    "cne_municipio",
+    "paises_alfa",
     {
-      mun: {
+      alfa2: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      nombre_paises: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      alfan: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true
       },
-      id: {
-        type: DataTypes.INTEGER,
-        allowNull: true
-      },
-      municipio: {
+      alfa3: {
         type: DataTypes.STRING,
-        allowNull: true
-      },
-      edo: {
-        type: DataTypes.INTEGER,
-        allowNull: true
+        allowNull: false
       }
     },
     {
-      tableName: "cne_municipio",
+      tableName: "paises_alfa",
       schema: "demograficos",
       timestamps: false
     }

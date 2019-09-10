@@ -1,10 +1,10 @@
-import { personas, Fp_nacimiento } from "../models";
+import { personas, Fp_nacimiento,Pais } from "../models";
 import { Res } from "../helpers/helpers";
 function persona(req, res) {
   let body = req.body;
   personas
     .findAll({
-      include: [{ model: Fp_nacimiento, required: false }],
+      include: [{ model: Fp_nacimiento, required: false },{model: Pais}],
       where: {
         cedula: body.cedula,
         nacionalidad: body.nacionalidad

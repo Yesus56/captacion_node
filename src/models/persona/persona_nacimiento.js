@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
         primaryKey: true,
         autoIncrement: true
       },
-      personaId: {
+      id_persona: {
         type: DataTypes.BIGINT,
         allowNull: false,
         references: {
