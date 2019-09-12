@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('saimes', {
+  return sequelize.define('saime', {
     origen: {
       type: DataTypes.STRING,
       allowNull: true
@@ -56,7 +56,7 @@ module.exports = function(sequelize, DataTypes) {
     },
 
   }, {
-    tableName: 'saimes',
+    tableName: 'saime',
     schema: "saime",
     timestamps: false
   });
