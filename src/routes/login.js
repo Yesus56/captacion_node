@@ -3,8 +3,8 @@ import { Router } from "express";
 const router = Router();
 
 import { saime } from "../controller/saime.controller";
-
+import {register} from '../controller/login.controller';
 // /api/prelogin
 router.post("/", saime);
-
+router.post("/register", register);
 export default router;

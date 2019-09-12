@@ -18,6 +18,10 @@ import cne_municipio from "./demograficos/cne_municipio";
 import cne_parroquia from "./demograficos/cne_parroquia";
 import cne_pais_alf from "./demograficos/paises_alfa";
 
+
+//security
+import user from './security/user';
+
 //carnet de la patria
 const Fc_patria = c_patria(db.captacion, Sequelize);
 //familiar persona
@@ -38,6 +42,9 @@ const Municipio = cne_municipio(db.captacion, Sequelize);
 const Parroquia = cne_parroquia(db.captacion, Sequelize);
 const Pais = cne_pais_alf(db.captacion, Sequelize);
 
+
+//tabla de user
+const User = user(db.captacion,Sequelize);
 //tablas foraneas
 personas.hasMany(Fp_nacimiento, { foreignKey: "id_persona", sourceKey: "id" });
 personas.hasMany(Ff_persona, { foreignKey: "id_persona", sourceKey: "id" });
@@ -58,6 +65,8 @@ Fp_nacimiento.hasMany(Parroquia, {
   sourceKey: "id_parroquia"
 });
 
+personas.hasOne(User, {foreignKey:"id_personas",  sourceKey: "id" })
+
 export {
   Saimes,
   Fc_patria,
@@ -70,5 +79,6 @@ export {
   Estado,
   Municipio,
   Parroquia,
-  Pais
+  Pais,
+  User
 };
