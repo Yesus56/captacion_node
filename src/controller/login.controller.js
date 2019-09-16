@@ -94,6 +94,7 @@ function register(req, res) {
 
 function persona(req, res) {
   let body = req.body;
+ 
   personas
     .findAll({
       include: [{ model: Fp_nacimiento, required: false }, { model: Pais }],
@@ -113,7 +114,8 @@ function persona(req, res) {
 
 function login(req,res){
   let body = req.body
-
+ // console.log(req);
+ 
   personas.findOne({
     include: [{ model: User , required: true}],
     where: {
@@ -130,6 +132,8 @@ function login(req,res){
          res.json('no autorizado');
        }
 
+    }else{
+      res.json('usuario no existe');
     }
   }).catch((err) => {
     console.log(err)
