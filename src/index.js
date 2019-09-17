@@ -1,6 +1,8 @@
+import './config/config';
 import app from "./app";
 
-app.listen("6000", err => {
+
+app.listen(process.env.PORT, err => {
   if (err) throw new Error(err);
-  console.log("servidor 6000");
+  console.log(`ervido conectaod al ${process.env.PORT}`);
 });

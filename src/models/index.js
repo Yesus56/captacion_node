@@ -1,5 +1,5 @@
 import Sequelize from "sequelize";
-import { db } from "../database/database";
+import { db } from "../config/database";
 
 //saime
 import saimes from "./saime/saimes.js";

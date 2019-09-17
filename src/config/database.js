@@ -3,6 +3,7 @@ import config from "./database.json";
 
 export const db = {};
 
+
 Object.keys(config.database).map(key => {
   let database = config.database[key];
 
