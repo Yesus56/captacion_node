@@ -3,8 +3,8 @@ import { Router } from "express";
 const router = Router();
 
 import { persona } from "../controller/login.controller";
-
-// /api/login
+router.use()
+// /api/perosnal
 router.post("/", persona);
 
 

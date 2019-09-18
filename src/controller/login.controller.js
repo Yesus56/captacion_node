@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt';
 import { Res } from "../helpers/helpers";
 import _ from "underscore";
 import { userInfo } from "os";
+import jwt from 'jsonwebtoken';
 
 function register(req, res) {
   let body = req.body;
@@ -127,7 +128,22 @@ function login(req,res){
       let usuario = result.dataValues
 
        if(bcrypt.compareSync(body.password , usuario.user.password)){
-        res.json('usuario ingresado');
+        //console.log(usuario)
+       let token =  jwt.sign({
+          nacionaldiad : usuario.nacionalidad,
+          cedula : usuario.cedula,
+          pnombre : usuario.pnombre,
+          snombre : usuario.snombre,
+          papellido: usuario.papellido,
+          sapellido : usuario.spaellido,
+        }, process.env.PRIVATE, 
+        {expiresIn: process.env.CADUCIDAD_TOKEN});
+
+        res.json({
+          ok:true,
+          token
+        });
+
        }else{
          res.json('no autorizado');
        }

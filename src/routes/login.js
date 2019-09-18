@@ -4,7 +4,7 @@ const router = Router();
 
 import { saime } from "../controller/saime.controller";
 import {register,login} from '../controller/login.controller';
-// /api/prelogin
+// /api/login
 router.post("/", login);
 router.post("/register", register);
 export default router;

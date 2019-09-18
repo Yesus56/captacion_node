@@ -21,7 +21,7 @@ import cne_pais_alf from "./demograficos/paises_alfa";
 
 //security
 import user from './security/user';
-
+import {token} from './security/token';
 //carnet de la patria
 const Fc_patria = c_patria(db.captacion, Sequelize);
 //familiar persona
@@ -67,6 +67,8 @@ Fp_nacimiento.hasMany(Parroquia, {
 
 personas.hasOne(User, {foreignKey:"id_personas",  sourceKey: "id" })
 
+
+
 export {
   Saimes,
   Fc_patria,
@@ -80,5 +82,6 @@ export {
   Municipio,
   Parroquia,
   Pais,
-  User
+  User,
+  token
 };
