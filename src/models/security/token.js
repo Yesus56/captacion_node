@@ -1,7 +1,7 @@
 import { Schema, } from 'mongoose';
+import uniqueValidator from 'mongoose-unique-validator';
 
-
-let token = new Schema({
+let tokenSchema = new Schema({
     token : {
         type: String,
         required: true
@@ -14,5 +14,5 @@ let token = new Schema({
 
 
 export{
-    token
+    tokenSchema
 }
