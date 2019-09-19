@@ -1,4 +1,4 @@
-import { Schema, } from 'mongoose';
+import { Schema,model } from 'mongoose';
 import uniqueValidator from 'mongoose-unique-validator';
 
 let tokenSchema = new Schema({
@@ -8,11 +8,9 @@ let tokenSchema = new Schema({
     },
     rol: {
         type :String,
-        required: true
     }
 }) 
 
+   let token =  model('Token',tokenSchema);
 
-export{
-    tokenSchema
-}
+export default token

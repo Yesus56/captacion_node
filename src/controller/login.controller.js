@@ -1,4 +1,5 @@
-import { Saimes, personas, User, Pais } from "../models";
+import { Saimes, personas, User, Pais,Token} from "../models";
+import TokenSchema from '../models/security/token';
 import bcrypt from 'bcrypt';
 import { Res } from "../helpers/helpers";
 import _ from "underscore";
@@ -129,7 +130,8 @@ function login(req,res){
 
        if(bcrypt.compareSync(body.password , usuario.user.password)){
         //console.log(usuario)
-       let token =  jwt.sign({
+       let token = new Token(
+         { token : jwt.sign({
           nacionaldiad : usuario.nacionalidad,
           cedula : usuario.cedula,
           pnombre : usuario.pnombre,
@@ -137,12 +139,15 @@ function login(req,res){
           papellido: usuario.papellido,
           sapellido : usuario.spaellido,
         }, process.env.PRIVATE, 
-        {expiresIn: process.env.CADUCIDAD_TOKEN});
+        {expiresIn: process.env.CADUCIDAD_TOKEN})});
+        
+        token.save((err, DBtoken) => {
+          res.json({
+            ok:true,
+            DBtoken
+          });
 
-        res.json({
-          ok:true,
-          token
-        });
+        })
 
        }else{
          res.json('no autorizado');

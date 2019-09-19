@@ -21,7 +21,7 @@ import cne_pais_alf from "./demograficos/paises_alfa";
 
 //security
 import user from './security/user';
-import {tokenSchema} from './security/token';
+import Token from './security/token';
 //carnet de la patria
 const Fc_patria = c_patria(db.captacion, Sequelize);
 //familiar persona
@@ -83,5 +83,5 @@ export {
   Parroquia,
   Pais,
   User,
-  tokenSchema
+  Token
 };
