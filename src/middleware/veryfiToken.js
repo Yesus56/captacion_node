@@ -1,6 +1,20 @@
-
+import jwt from 'jsonwebtoken';
 let jwtoken = (req, res,next)=>{
-    token = req.get('Token');
-    console.log(token);
+  let token =  req.get('token');
+  jwt.verify( token , process.env.PRIVATE, (err,decoded) => {
+    if(err){
+        return res.status(401).json({
+            ok:false,
+            err
+        })
+    }
+    req.usuario = decoded
+    console.log(req.usuario);
     next();
-} 
+    })
+}
+
+
+export{
+    jwtoken
+}

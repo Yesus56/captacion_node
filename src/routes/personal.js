@@ -2,9 +2,11 @@
 import { Router } from "express";
 const router = Router();
 
-import { persona } from "../controller/login.controller";
+import { persona } from "../controller/persona.controller";
+import {jwtoken} from '../middleware/veryfiToken';
 //router.use()
 // /api/perosnal
+router.use(jwtoken);
 router.post("/", persona);
 
 

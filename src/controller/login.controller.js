@@ -130,8 +130,9 @@ function login(req,res){
 
        if(bcrypt.compareSync(body.password , usuario.user.password)){
         //console.log(usuario)
-       let token = new Token(
-         { token : jwt.sign({
+       let token = new Token({ 
+         cedula: usuario.nacionalidad+"-"+usuario.cedula, 
+         token : jwt.sign({
           nacionaldiad : usuario.nacionalidad,
           cedula : usuario.cedula,
           pnombre : usuario.pnombre,
@@ -139,14 +140,15 @@ function login(req,res){
           papellido: usuario.papellido,
           sapellido : usuario.spaellido,
         }, process.env.PRIVATE, 
-        {expiresIn: process.env.CADUCIDAD_TOKEN})});
+        {expiresIn: process.env.CADUCIDAD_TOKEN})
+        
+      });
         
         token.save((err, DBtoken) => {
           res.json({
             ok:true,
             DBtoken
           });
-
         })
 
        }else{

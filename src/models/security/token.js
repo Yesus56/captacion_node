@@ -8,6 +8,10 @@ let tokenSchema = new Schema({
     },
     rol: {
         type :String,
+    },
+    cedula:{
+        type: String,
+        required:true
     }
 }) 
 
