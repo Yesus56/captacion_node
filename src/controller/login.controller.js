@@ -143,6 +143,8 @@ function login(req,res){
         {expiresIn: process.env.CADUCIDAD_TOKEN})
         
       });
+
+      token.findAll({cedula:`usuario.` })
         
         token.save((err, DBtoken) => {
           res.json({
