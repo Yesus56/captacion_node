@@ -5,7 +5,7 @@ import { Res } from "../helpers/helpers";
 function persona(req,res){
     console.log('persona');
 
-    res.json('persona')
+    res.json(req.newtoken)
 }
 
 

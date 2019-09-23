@@ -144,7 +144,7 @@ function login(req,res){
         
       });
 
-      token.findAll({cedula:`usuario.` })
+      Token.findOne({cedula:`${usuario.nacionalidad}-${usuario.cedula}` })
         
         token.save((err, DBtoken) => {
           res.json({
