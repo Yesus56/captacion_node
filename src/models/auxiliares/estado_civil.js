@@ -2,15 +2,19 @@
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('estado_civil', {
-    id_estado_civil: {
+    id: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
     },
     nombre: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false
     }
   }, {
-    tableName: 'estado_civil'
+    tableName: 'estado_civil',
+    schema: "auxiliares",
+    timestamps: false
   });
 };

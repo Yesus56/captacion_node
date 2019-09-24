@@ -139,6 +139,7 @@ function login(req,res){
           snombre : usuario.snombre,
           papellido: usuario.papellido,
           sapellido : usuario.spaellido,
+          persona: usuario.id       
         }, process.env.PRIVATE, 
         {expiresIn: process.env.CADUCIDAD_TOKEN})
         
@@ -149,7 +150,7 @@ function login(req,res){
         token.save((err, DBtoken) => {
           res.json({
             ok:true,
-            DBtoken
+            token : DBtoken.token
           });
         })
 

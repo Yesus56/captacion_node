@@ -5,6 +5,11 @@ import { db } from "../config/database";
 import saimes from "./saime/saimes.js";
 const Saimes = saimes(db.saime, Sequelize);
 
+//auxiliares
+
+import estado_civil from './auxiliares/estado_civil';
+
+
 //persona
 import c_patria from "./persona/c_patria";
 import f_persona from "./persona/familiar_persona";
@@ -42,6 +47,10 @@ const Municipio = cne_municipio(db.captacion, Sequelize);
 const Parroquia = cne_parroquia(db.captacion, Sequelize);
 const Pais = cne_pais_alf(db.captacion, Sequelize);
 
+//auxiliares
+const civil = estado_civil(db.captacion,Sequelize);
+
+
 
 //tabla de user
 const User = user(db.captacion,Sequelize);
@@ -64,6 +73,10 @@ Fp_nacimiento.hasMany(Parroquia, {
   foreignKey: "id",
   sourceKey: "id_parroquia"
 });
+
+Fc_patria.hasMany(civil,{
+  foreignKey:"id_civil",  sourceKey: "id"
+})
 
 personas.hasOne(User, {foreignKey:"id_personas",  sourceKey: "id" })
 
