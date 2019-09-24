@@ -133,7 +133,7 @@ function login(req,res){
        let token = new Token({ 
          cedula: usuario.nacionalidad+"-"+usuario.cedula, 
          token : jwt.sign({
-          nacionaldiad : usuario.nacionalidad,
+          nacionalidad : usuario.nacionalidad,
           cedula : usuario.cedula,
           pnombre : usuario.pnombre,
           snombre : usuario.snombre,

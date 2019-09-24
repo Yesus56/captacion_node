@@ -13,7 +13,7 @@ const jwtoken = async (req, res, next) => {
       errr: "no atorizado"
     });
   } else {
-    jwt.verify(tokenreq, process.env.PRIVATE, (err, decoded) => {
+    jwt.verify(tokenreq, process.env.PRIVATE, async (err, decoded) => {
       if (err) {
         return res.status(401).json({
           ok: false,
@@ -35,10 +35,21 @@ const jwtoken = async (req, res, next) => {
                     { expiresIn: process.env.CADUCIDAD_TOKEN }
                     )
                 });
-        Token.findOneAndUpdate({token : tokenreq}, {token: newtoken})
+          
+               let tokenupdate = {cedula:  `${decoded.nacionalidad}-${decoded.cedula}`}
+               console.log(tokenupdate);
+       let tokenprueba=  await Token.findOneAndUpdate(tokenupdate, {
+        cedula: decoded.nacionalidad+"-"+decoded.cedula,
+        token: newtoken.token
+        })
+ 
+        tokenprueba.save((err, DBtoken) => {
+
+        });
+     
         req.usuario = decoded;
         req.newtoken = newtoken;
-        console.log(req.usuario);
+   
         next();
 
 

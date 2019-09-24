@@ -1,38 +1,38 @@
 {
-    "database" : {
-        "saime" : {
-            "database": "saime",
-            "username" : "usr_ipasme",
-            "password" : "usr_ipasme*/2018",
-            "patch": {
-                "host": "172.16.3.97",
-                "port":  5432,
-                "dialect": "postgres",
-                "pool": {
-                  "max": 5,
-                  "min": 0,
-                  "require": 30000,
-                  "idle": 30
-                }
+  "database" : {
+      "saime" : {
+          "database": "saime",
+          "username" : "postgres",
+          "password" : "desarrollo",
+          "patch": {
+              "host": "localhost",
+              "port":  5433,
+              "dialect": "postgres",
+              "pool": {
+                "max": 5,
+                "min": 0,
+                "require": 30000,
+                "idle": 30
               }
-        },
-        "captacion" : {
-            "database": "captacion",
-            "username" : "postgres",
-            "password" : "postgres",
-            "patch": {
-                "host": "localhost",
-                "port":  5432,
-                "dialect": "postgres",
-                "pool": {
-                  "max": 5,
-                  "min": 0,
-                  "require": 30000,
-                  "idle": 300
-                }
+            }
+      },
+      "captacion" : {
+          "database": "captacion",
+          "username" : "postgres",
+          "password" : "desarrollo",
+          "patch": {
+              "host": "localhost",
+              "port":  5433,
+              "dialect": "postgres",
+              "pool": {
+                "max": 5,
+                "min": 0,
+                "require": 30000,
+                "idle": 300
               }
-        }
-    }
+            }
+      }
+  }
 }
 
 

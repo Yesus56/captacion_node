@@ -26,7 +26,7 @@ Object.keys(config.database).map(key => {
     });
 });
 
-connect('mongodb://localhost:27017/dbconcurso',{useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
+connect('mongodb://localhost:27017/dbconcurso',{useNewUrlParser: true, useUnifiedTopology: true ,useFindAndModify: false}).then(() => {
   console.log('conectado dbconcurso en mongo');
 }).catch((err) => {
   console.log('dbconcurso mongo a fallado');
