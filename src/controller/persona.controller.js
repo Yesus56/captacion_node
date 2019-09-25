@@ -3,30 +3,30 @@ import { Res } from "../helpers/helpers";
 import _ from "underscore";
 
 function getPersona(req, res) {
-  token = req.newtoken.token;
+ let  token = req.newtoken.token;
   let body = req.body;
 
-  Fc_patria.findOne({ where: body.idPersona })
+  Fc_patria.findOne({ where: {id_persona :req.persona} })
     .then(result => {
       if (_.isEmpty(result)) {
-        res.json({
+       return res.json({
           ok: true,
           token: token,
           message: 0
         });
       } else {
-        res.json({
+        return res.json({
           ok: true,
           token: token,
-          message: result[0].dataValues.id
+          message: result
         });
       }
     })
     .catch(err => {
-      console.log(err);
+    
       return res.status(500).json({
         ok: false,
-        token: rtoken,
+        token: token,
         message: "error en el servidor"
       });
     });

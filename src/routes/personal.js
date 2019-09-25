@@ -7,7 +7,9 @@ import {jwtoken} from '../middleware/veryfiToken';
 //router.use()
 // /api/perosnal
 router.use(jwtoken);
+router.get("/",getPersona);
 router.post("/", insertpersona);
 router.put("/", updatePersona);
+
 
 export default router;
