@@ -4,7 +4,7 @@ import _ from "underscore";
 const jwtoken = async (req, res, next) => {
   let tokenreq = req.get("token");
   let tokendb = await Token.find({ token: tokenreq });
-  console.log(tokendb);
+  //console.log(tokendb);
 
   if (_.isEmpty(tokendb)) {
     return res.status(401).json({

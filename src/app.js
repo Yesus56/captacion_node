@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import login from "./routes/login";
 import personal from "./routes/personal";
 import demografico from './routes/demograficos';
-
+import direccion from './routes/direccion';
 //inisializacion
 
 const app = express();
@@ -21,6 +21,6 @@ app.use(json());
 app.use("/api/login", login);
 app.use("/api/perosnal", personal);
 app.use("/api/demografico", demografico);
-
+app.use("/api/direccion", direccion);
 
 export default app;

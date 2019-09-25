@@ -15,11 +15,7 @@ function getPersona(req, res) {
           message: 0
         });
       } else {
-        return res.json({
-          ok: true,
-          token: token,
-          message: result
-        });
+        return res.json(Res(true,result,token));
       }
     })
     .catch(err => {
@@ -60,11 +56,7 @@ function insertpersona(req, res) {
     })
     .catch(err => {
       console.log(err);
-      return res.status(500).json({
-        ok: false,
-        token: token,
-        message: "error en el servidor"
-      });
+      return res.status(500).json(Res(false,"error en el servidor",token));
     });
 }
 

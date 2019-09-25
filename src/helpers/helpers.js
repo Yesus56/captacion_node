@@ -1,8 +1,10 @@
-export function Res(ok, message) {
+export function Res(ok, message,token) {
+
   return {
     ok: ok,
-    err: {
-      message: message
+    token: token,
+    data: {
+      message
     }
   };
 }

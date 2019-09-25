@@ -18,6 +18,9 @@ import p_nacimiento from "./persona/persona_nacimiento";
 import pp_sc from "./persona/persona_persona_sc";
 import Persona_sc from "./persona/persona_sc";
 import p_sc_nacimiento from "./persona/persona_sc_nacimiento";
+import dbDireccion from './persona/direccion';
+
+//demograficos
 import cne_estadp from "./demograficos/cne_estado";
 import cne_municipio from "./demograficos/cne_municipio";
 import cne_parroquia from "./demograficos/cne_parroquia";
@@ -41,6 +44,9 @@ const Fpp_sc = pp_sc(db.captacion, Sequelize);
 const P_sc = Persona_sc(db.captacion, Sequelize);
 // tabla de nacimiento de persona s/c
 const Fp_sc_nacimiento = p_sc_nacimiento(db.captacion, Sequelize);
+//direcicon
+const Direccion = dbDireccion(db.captacion, Sequelize)
+
 //tabla estado municipio parroquia pais
 const Estado = cne_estadp(db.captacion, Sequelize);
 const Municipio = cne_municipio(db.captacion, Sequelize);
@@ -77,9 +83,9 @@ Fp_nacimiento.hasMany(Parroquia, {
 Fc_patria.hasMany(civil,{
   foreignKey:"id_civil",  sourceKey: "id"
 })
+//Direccion.hasOne(personas,{foreignKey:"id_persona", sourceKey: "id"})
 
-personas.hasOne(User, {foreignKey:"id_personas",  sourceKey: "id" })
-
+personas.hasOne(User, {foreignKey:"id_personas",  sourceKey: "id" });
 
 
 export {
@@ -96,5 +102,6 @@ export {
   Parroquia,
   Pais,
   User,
+  Direccion,
   Token
 };

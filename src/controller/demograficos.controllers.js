@@ -1,4 +1,4 @@
-import { Pais, Estado, Municipio, Paroquia, Parroquia } from "../models";
+import { Pais, Estado, Municipio, Parroquia } from "../models";
 
 function getPais(req, res) {
   Pais.findAll()
