@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
       unique: true
     },
     cedula: {
-      type: DataTypes.BIGINT,
+      type: DataTypes.STRING,
       allowNull: false,
       primaryKey: true
     },
@@ -24,7 +24,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     snombre: {
       type: DataTypes.STRING,
-      allowNull: false
+      
     },
     papellido: {
       type: DataTypes.STRING,
@@ -32,7 +32,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     sapellido: {
       type: DataTypes.STRING,
-      allowNull: false
+      
     },
     fcha_nacimiento: {
       type: DataTypes.DATEONLY,
