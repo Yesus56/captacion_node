@@ -7,8 +7,7 @@ const Saimes = saimes(db.saime, Sequelize);
 
 //auxiliares
 
-import estado_civil from './auxiliares/estado_civil';
-
+import estado_civil from "./auxiliares/estado_civil";
 
 //persona
 import c_patria from "./persona/c_patria";
@@ -18,7 +17,7 @@ import p_nacimiento from "./persona/persona_nacimiento";
 import pp_sc from "./persona/persona_persona_sc";
 import Persona_sc from "./persona/persona_sc";
 import p_sc_nacimiento from "./persona/persona_sc_nacimiento";
-import dbDireccion from './persona/direccion';
+import dbDireccion from "./persona/direccion";
 
 //demograficos
 import cne_estadp from "./demograficos/cne_estado";
@@ -26,10 +25,9 @@ import cne_municipio from "./demograficos/cne_municipio";
 import cne_parroquia from "./demograficos/cne_parroquia";
 import cne_pais_alf from "./demograficos/paises_alfa";
 
-
 //security
-import user from './security/user';
-import Token from './security/token';
+import user from "./security/user";
+import Token from "./security/token";
 //carnet de la patria
 const Fc_patria = c_patria(db.captacion, Sequelize);
 //familiar persona
@@ -45,7 +43,7 @@ const P_sc = Persona_sc(db.captacion, Sequelize);
 // tabla de nacimiento de persona s/c
 const Fp_sc_nacimiento = p_sc_nacimiento(db.captacion, Sequelize);
 //direcicon
-const Direccion = dbDireccion(db.captacion, Sequelize)
+const Direccion = dbDireccion(db.captacion, Sequelize);
 
 //tabla estado municipio parroquia pais
 const Estado = cne_estadp(db.captacion, Sequelize);
@@ -54,12 +52,10 @@ const Parroquia = cne_parroquia(db.captacion, Sequelize);
 const Pais = cne_pais_alf(db.captacion, Sequelize);
 
 //auxiliares
-const civil = estado_civil(db.captacion,Sequelize);
-
-
+const civil = estado_civil(db.captacion, Sequelize);
 
 //tabla de user
-const User = user(db.captacion,Sequelize);
+const User = user(db.captacion, Sequelize);
 //tablas foraneas
 personas.hasMany(Fp_nacimiento, { foreignKey: "id_persona", sourceKey: "id" });
 personas.hasMany(Ff_persona, { foreignKey: "id_persona", sourceKey: "id" });
@@ -67,7 +63,7 @@ personas.hasMany(Pais, { foreignKey: "alfan", sourceKey: "id_pais" });
 
 Ff_persona.hasMany(personas, {
   foreignKey: "id",
-  sourceKey: "id_perosna_familia"
+  sourceKey: "id_persona_familia"
 });
 
 Fp_nacimiento.hasMany(Estado, { foreignKey: "edo", sourceKey: "id_estado" });
@@ -80,13 +76,13 @@ Fp_nacimiento.hasMany(Parroquia, {
   sourceKey: "id_parroquia"
 });
 
-Fc_patria.hasMany(civil,{
-  foreignKey:"id_civil",  sourceKey: "id"
-})
+Fc_patria.hasMany(civil, {
+  foreignKey: "id_civil",
+  sourceKey: "id"
+});
 //Direccion.hasOne(personas,{foreignKey:"id_persona", sourceKey: "id"})
 
-personas.hasOne(User, {foreignKey:"id_personas",  sourceKey: "id" });
-
+personas.hasOne(User, { foreignKey: "id_personas", sourceKey: "id" });
 
 export {
   Saimes,

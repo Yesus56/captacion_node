@@ -2,15 +2,18 @@
 import { Router } from "express";
 const router = Router();
 
-import {getDireccion,insertDireccion,updateDireccion} from '../controller/direccion.controllers';
-import {jwtoken} from '../middleware/veryfiToken';
+import {
+  getDireccion,
+  insertDireccion,
+  updateDireccion
+} from "../controller/direccion.controllers";
+import { jwtoken } from "../middleware/veryfiToken";
 
 router.use(jwtoken);
 
 // /api/direccion
-router.get("/",getDireccion);
-router.post("/",insertDireccion);
-router.put("/",updateDireccion);
-
+router.get("/", getDireccion);
+router.post("/", insertDireccion);
+router.put("/", updateDireccion);
 
 export default router;

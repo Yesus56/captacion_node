@@ -2,7 +2,13 @@
 import { Router } from "express";
 const router = Router();
 
-import { getEstado,getPais,getMunicipio,getParroquia,getEspa } from "../controller/demograficos.controllers";
+import {
+  getEstado,
+  getPais,
+  getMunicipio,
+  getParroquia,
+  getEspa
+} from "../controller/demograficos.controllers";
 
 // /api/demografico
 router.get("/estado", getEstado);

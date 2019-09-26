@@ -9,9 +9,11 @@ function getPais(req, res) {
 }
 
 function getEstado(req, res) {
-  Estado.findAll({atributer : {
-    exclude : ['id']
-  }})
+  Estado.findAll({
+    atributer: {
+      exclude: ["id"]
+    }
+  })
     .then(result => {
       res.json(result);
     })
@@ -35,10 +37,12 @@ function getParroquia(req, res) {
 }
 
 async function getEspa(req, res) {
-   const estados = await Estado.findAll({atributer : {exclude : ['id']}}).catch(err => {});
-   const pais = await Pais.findAll().catch(err => {})
+  const estados = await Estado.findAll({
+    atributer: { exclude: ["id"] }
+  }).catch(err => {});
+  const pais = await Pais.findAll().catch(err => {});
 
-   res.json({estados, pais})
-  }
+  res.json({ estados, pais });
+}
 
 export { getEstado, getMunicipio, getPais, getParroquia, getEspa };

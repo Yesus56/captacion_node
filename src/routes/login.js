@@ -2,8 +2,7 @@
 import { Router } from "express";
 const router = Router();
 
-import { saime } from "../controller/saime.controller";
-import {register,login} from '../controller/login.controller';
+import { register, login } from "../controller/login.controller";
 // /api/login
 router.post("/", login);
 router.post("/register", register);

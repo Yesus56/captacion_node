@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
           key: "id"
         }
       },
-      id_perosna_familia: {
+      id_persona_familia: {
         type: DataTypes.BIGINT,
         allowNull: false,
         references: {
