@@ -108,7 +108,7 @@ async function updateFamilia(req, res) {
   });
   let datos;
   console.log(body.cedula);
-  if (familiar.cedula == "N/P" && _.isEmpty(body.cedula)) {
+  if (familiar.cedula == "N" && _.isEmpty(body.cedula)) {
     datos = {
       nacionalidad: body.nacionalidad,
       pnombre: body.primer_nombre,
@@ -119,20 +119,19 @@ async function updateFamilia(req, res) {
       id_pais: body.alfan
     };
     await personas.update(datos, { where: { id: body.familiar } });
-    console.log("entro en if");
+
   } else if (body.nacionalidad != "N" && !_.isNull(body.cedula)) {
-    console.log("damilia existe")
+
     let familiarExiste = await personas.findOne({
       where: { cedula: body.cedula, nacionalidad: body.nacionalidad },
       raw: true
     });
-    console.log(familiarExiste);
+    console.log(familiarExiste.id);
     if (!_.isEmpty(familiarExiste)) {
 
-        console.log(body.familiar);
       let familiares = await Ff_persona.findAll({where:{id_persona_familia:body.familiar},raw:true});
-      //console.log(familiarExiste);
-      let prueba = {id_persona_familia: body.familiar }
+
+      let prueba = {id_persona_familia: familiarExiste.id }
       console.log(prueba);
 
        Ff_persona.update(
@@ -143,10 +142,9 @@ async function updateFamilia(req, res) {
       }).catch((err) => {
         console.log(err);
       });
-
-      //console.log(persona_fami);
         console.log('actualizando persona')
-    } else {
+      personas.destroy({where : { id: body.familiar}});
+      } else {
       console.log("antes consulta saime")
       let saime = await Saimes.findOne({
         where: {
@@ -170,17 +168,19 @@ async function updateFamilia(req, res) {
         fcha_nacimiento: saime.fecha_nacimiento,
         id_pais: pais.alfan
       };
-      await personas.update(datos, { where: { id: body.familiar } });
-      await Ff_persona.update(
-        { afinidad_id: body.afinidad },
-        { where: { id_persona: persona } }
-      );
-      let datosNacimiento = {
-        
-      } 
-      await Fp_nacimiento.update(datosNacimiento, {
-        where: { id_persona: body.familiar }
-      });
+       await personas.update(datos, { where: { id: body.familiar } });
+      // await Ff_persona.update(
+      //   { afinidad_id: body.afinidad },
+      //   { where: { id_persona: persona } }
+      // );
+      let datosnacimiento = {
+        id_estado: body.estado,
+        id_municipio: body.municipio,
+        id_parroquia: body.parroquia
+      }; 
+      // await Fp_nacimiento.update(datosNacimiento, {
+      //   where: { id_persona: body.familiar }
+      // });
     }
   }
 
