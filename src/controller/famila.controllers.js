@@ -8,7 +8,7 @@ import {
 } from "../models";
 import { Res } from "../helpers/helpers";
 import _ from "underscore";
-import { SSL_OP_SINGLE_DH_USE, S_IFSOCK } from "constants";
+import colors from "colors";
 
 function getFamilia(req, res) {}
 
@@ -107,8 +107,10 @@ async function updateFamilia(req, res) {
     raw: true
   });
   let datos, saime;
-  console.log(familiar);
-  if (familiar.nacionalidad == "N" && _.isEmpty(body.cedula)) {
+  console.log('familiar');
+console.log(_.isEmpty(body.cedula))
+  if (familiar.nacionalidad == "N" && _.isNull(body.cedula)) {
+    console.log('heyy')
     datos = {
       nacionalidad: body.nacionalidad,
       pnombre: body.primer_nombre,
@@ -119,22 +121,16 @@ async function updateFamilia(req, res) {
       id_pais: body.alfan
     };
     await personas.update(datos, { where: { id: body.familiar } });
-    console.log("entro en if");
-  } else if (familiar.nacionalidad == "N" && !_.isNull(body.cedula)) {
+  
+  } else if (familiar.nacionalidad == "N") {
+    console.log('actualziacion')
     let familiarExiste = await personas.findOne({
       where: { cedula: body.cedula, nacionalidad: body.nacionalidad },
       raw: true
     });
-    if (!_.isEmpty(familiarExiste)) {
-      console.log(body.familiar);
-      let familiares = await Ff_persona.findAll({
-        where: { id_persona_familia: body.familiar },
-        raw: true
-      });
-      //console.log(familiarExiste);
-      let prueba = { id_persona_familia: body.familiar };
-      console.log(prueba);
-
+    
+    if (familiarExiste.id !== body.familiar ) {
+      let prueba = { id_persona_familia: familiarExiste.id };
       Ff_persona.update(prueba, {
         where: { id_persona_familia: body.familiar }
       })
@@ -155,29 +151,41 @@ async function updateFamilia(req, res) {
         },
         raw: true
       });
-      console.log(saime);
-      let pais = await Pais.findAll({
-        where: { alfa3: saime.pais_origen },
-        raw: true
-      });
+      let pais = {alfan: ""};
+      if(!_.isEmpty(saime) ){
+         pais = await Pais.findAll({
+          where: { alfa3: saime.pais_origen },
+          raw: true
+        });
+      }
+      console.log(body);
       datos = {
         nacionalidad: body.nacionalidad,
         cedula: body.cedula,
-        pnombre: saime.primer_nombre,
-        snombre: saime.segundo_nombre,
-        papellido: saime.primer_apellido,
-        sapellido: saime.segundo_apellido,
-        fcha_nacimiento: saime.fecha_nacimiento,
-        id_pais: pais.alfan
+        pnombre: saime.primer_nombre || body.primer_nombre,
+        snombre: saime.segundo_nombre || body.segundo_nombre ,
+        papellido: saime.primer_apellido || body.primer_apellido ,
+        sapellido: saime.segundo_apellido || body.segundo_apellido,
+        fcha_nacimiento: saime.fecha_nacimiento || body.fecha_nacimiento,
+        id_pais: pais.alfan || body.alfan
       };
+      console.log("/////////////".blue)       
+      console.log(datos)
+      console.log("/////////////".blue)
       await personas.update(datos, { where: { id: body.familiar } });
-      // await Ff_persona.update(
-      //   { afinidad_id: body.afinidad },
-      //   { where: { id_persona: persona } }
-      // );
-      // await Fp_nacimiento.update(datosNacimiento, {
-      //   where: { id_persona: body.familiar }
-      // });
+        await Ff_persona.update(
+        { afinidad_id: body.afinidad },
+        { where: { id_persona: persona } }
+      );
+      let datosNacimiento = {
+        id_estado: body.estado,
+        id_municipio: body.municipio,
+        id_parroquia: body.parroquia
+      };
+
+      await Fp_nacimiento.update(datosNacimiento, {
+        where: { id_persona: body.familiar }
+      });
     }
   }
 

@@ -1,0 +1,58 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add colors
+
+PATH: 
+  D:\desarrollo\terminal\bin;D:\desarrollo\terminal\vendor\bin;D:\desarrollo\terminal\vendor\conemu-maximus5\ConEmu\Scripts;D:\desarrollo\terminal\vendor\conemu-maximus5;D:\desarrollo\terminal\vendor\conemu-maximus5\ConEmu;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Users\Yesus\AMD APP SDK\2.9-1\bin\x86_64;C:\Users\Yesus\AMD APP SDK\2.9-1\bin\x86;C:\Program Files (x86)\AMD APP SDK\2.9-1\bin\x86_64;C:\Program Files (x86)\AMD APP SDK\2.9-1\bin\x86;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\AMD\ATI.ACE\Core-Static;C:\Program Files (x86)\AMD APP SDK\3.0\bin\x86_64;C:\Program Files (x86)\AMD APP SDK\3.0\bin\x86;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\Git\cmd;C:\PostgreSQL\pg96\bin;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files (x86)\pgmodeler;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\Yarn\bin\;C:\Users\Yesus\AppData\Roaming\Composer\vendor\bin;C:\Users\Yesus\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Yesus\AppData\Roaming\npm;C:\Program Files\heroku\bin;C:\Users\Yesus\AppData\Local\Yarn\bin;D:\desarrollo\terminal\vendor\git-for-windows\cmd;D:\desarrollo\terminal\vendor\git-for-windows\mingw64\bin;D:\desarrollo\terminal\vendor\git-for-windows\usr\bin;D:\desarrollo\terminal
+
+Yarn version: 
+  1.19.0
+
+Node version: 
+  10.15.3
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'D:\desarrollo\captacion\captacion_back_new\node_modules\.bcrypt.DELETE\lib\binding\bcrypt_lib.node'
+
+npm manifest: 
+  {
+    "name": "captacion_back_new",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "dev": "nodemon src/index.js --exec babel-node",
+      "build": "babel src --out-dir dist --copy-files",
+      "start": "node dist/index.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "@babel/polyfill": "^7.6.0",
+      "express": "^4.17.1",
+      "morgan": "^1.9.1",
+      "pg": "^7.12.1",
+      "pg-hstore": "^2.3.3",
+      "sequelize": "^5.18.1"
+    },
+    "devDependencies": {
+      "@babel/cli": "^7.6.0",
+      "@babel/core": "^7.6.0",
+      "@babel/node": "^7.6.1",
+      "@babel/preset-env": "^7.6.0",
+      "bcrypt": "^3.0.6",
+      "body-parser": "^1.19.0",
+      "jsonwebtoken": "^8.5.1",
+      "mongoose": "^5.7.1",
+      "mongoose-unique-validator": "^2.0.3",
+      "underscore": "^1.9.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
