@@ -10,13 +10,17 @@ import familia from "./routes/familia";
 //inisializacion
 
 const app = express();
-
+var cors = require('cors')
 //midelewares
 // parse application/x-www-form-urlencoded
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan("dev"));
 app.use(json());
+
+
+
 
 //routes
 app.use("/api/login", login);

@@ -3,7 +3,11 @@ import { Router } from "express";
 const router = Router();
 
 import { register, login } from "../controller/login.controller";
+import { runInNewContext } from "vm";
 // /api/login
-router.post("/", login);
+
+
+
+router.post("/" ,login);
 router.post("/register", register);
 export default router;
